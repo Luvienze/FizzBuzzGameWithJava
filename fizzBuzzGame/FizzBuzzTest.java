@@ -4,9 +4,8 @@ import java.util.Scanner;
 public class FizzBuzzTest {
 	public static void main(String[] args)
 	{
-		int a = 0;
-		String answer;
 		Scanner getUser = new Scanner(System.in);
+		String answer;
 		//Setting Game
 		FizzBuzzV2 fizzBuzzGame1 = new FizzBuzzV2 ();
 		fizzBuzzGame1.setGame("!Fizz Buzz Game!");
@@ -18,7 +17,7 @@ public class FizzBuzzTest {
 		
 		player1.setName("Daisy");
 		player2.setName("Paul");
-		player3.setName(null);
+		player3.setName("Cameron");
 		
 		//Setting players to game
 		Player players[] = {player1, player2, player3};
@@ -26,57 +25,40 @@ public class FizzBuzzTest {
 		
 		//Game Starts
 		System.out.println(fizzBuzzGame1.game);
+		fizzBuzzGame1.getRules();
+		System.out.println("Enter the size of game :" );
+		fizzBuzzGame1.setSizeOfGame(getUser.nextInt());
 		do 
 		{
-			for(int i=1; i<100; i++)
+			for(int i=1; i<=fizzBuzzGame1.sizeOfGame ; i++)
 			{
-				for(int j=0; j<fizzBuzzGame1.players.length;j++)
-				{
-					players[j].play(getUser.next());
-					if(i%5 == 0 && i%3 == 0)
-					{
-						answer = "fizz buzz";
-						answer = Integer.toString(i);
-						if(players[j].answer == answer) 
-						{
-							i++;
-						}
-						else
-						{
-							System.out.println("Player lost.");
-						}
-					}
-					if(i%3 == 0)
-					{	
-						answer = "fizz";
-						answer = Integer.toString(i);
-						if(players[j].answer == answer)
-						{
-							i++;
-						}
-						else
-						{
-							System.out.println("Player lost.");
-						}
-					}
-					if(i%5 == 0)
-					{	
-						
-						answer = "buzz";
-						answer = Integer.toString(i);
-						if(players[j].answer == answer)
-						{
-							i++;
-						}
-						else
-						{
-							System.out.println("Player lost.");
-						}
-					}
-					
+
+				if(i%5 == 0 && i%3 == 0)
+				{	
+					System.out.print(players[0].name + " :");
+					System.out.println("fizz buzz");
+					i++;
 				}
+				if(i%3 == 0)
+				{	
+					System.out.print(players[1].name + " :");
+					System.out.println("fizz");
+					i++;
+					}
+				if(i%5 == 0)
+				{	
+					System.out.print(players[2].name + " :");
+					System.out.println("fizz");
+					i++;
+				}
+				System.out.println(i);
 			}
+			System.out.println("Do you want to start again? (Y/N)");
+			answer = getUser.next();
 		}
-		while(a==1);
+		while(answer == "Y" && answer != "N");
+		System.out.println("Thank you for playing!!!");
 	}
+	
 }
+
